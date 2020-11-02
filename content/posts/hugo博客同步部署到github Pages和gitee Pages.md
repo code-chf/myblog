@@ -1,3 +1,32 @@
+---
+title: Hugo博客同步部署到github Pages和gitee Pages
+date: 2020-11-02T12:45:22+08:00
+lastmod: 2020-11-02T12:45:22+08:00
+author: codechf
+authorlink: https://github.com/code-chf
+cover: /img/default1.jpg
+categories:
+  - 教程
+tags:
+  - 技术帖
+draft: false
+---
+
+<!--more-->
+
+# hugo博客同步部署到github和gitee的两种方法
+
+## 方法一
+
+
+
+## 方法二
+
+在hugo站点根目录hugo/myblog下，新建脚本deploy.sh，因为我用的是mac电脑，能够运行.sh后缀的脚本文件，如果是windows就需要新建deploy.bat文件，然后里面写上需要执行的终端命令，即完成博客发布的一系列过程。
+
+deploy.sh
+
+```sh
 #该脚本实现myblog/content下的文章更新、config.toml配置文件更新和同时部署到gitee码云和github
 
 #git博客站点主要文件
@@ -66,3 +95,8 @@ git remote add origin https://github.com/code-chf/code-chf.github.io.git
 git push -u origin master
 # Come Back up to the Project Root
 cd ..
+
+```
+
+站点根目录结构：
+
