@@ -4,7 +4,7 @@ date: 2020-11-02T12:45:22+08:00
 lastmod: 2020-11-02T12:45:22+08:00
 author: codechf
 authorlink: https://github.com/code-chf
-cover: /img/default1.jpg
+cover: https://gitee.com/codechf/uPic-file/raw/master/uPic/2020/11/lK8wV7-0Wcd50.png
 categories:
   - 教程
 tags:
@@ -22,7 +22,7 @@ draft: false
 
 ## 方法二
 
-在hugo站点根目录hugo/myblog下，新建脚本deploy.sh，因为我用的是mac电脑，能够运行.sh后缀的脚本文件，如果是windows就需要新建deploy.bat文件，然后里面写上需要执行的终端命令，即完成博客发布的一系列过程。
+在hugo站点根目录hugo/myblog下，新建脚本deploy.sh，因为我用的是mac电脑，能够运行.sh后缀的脚本文件，如果是windows就需要新建deploy.bat文件，然后里面写上需要执行的终端命令，即完成博客发布的一系列过程，hugo发布目录默认是public作为gitee的本地仓库，通过`hugo --destination="public_github"`命令指定hugo发布的目录，作为github的本地仓库。
 
 deploy.sh
 
@@ -100,3 +100,4 @@ cd ..
 
 站点根目录结构：
 
+![截屏2020-11-02 12.59.05](https://gitee.com/codechf/uPic-file/raw/master/uPic/2020/11/sPkuiL-%E6%88%AA%E5%B1%8F2020-11-02%2012.59.05.png)
