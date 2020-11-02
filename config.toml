@@ -49,7 +49,7 @@ hasCJKLanguage = true
 
   author = "CHENG-HF"
   description = "cheng-hf 的生活记录～"
-  avatar = "/me/me/1.png"
+  avatar = "/me/me/1.jpg"
   motto = "与其感慨路难行，不如马上出发。"
   categoriesLimitInHeader = 12
   headerBottomText = "记录生活，记录美好~"

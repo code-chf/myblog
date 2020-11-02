@@ -2,7 +2,7 @@
 title: "Mac OS 终端 iTerm2 并配置 zsh"
 date: 2020-06-18T09:27:39+08:00
 draft: false
-cover: /img/mac终端iterm2有关配置.png
+cover: /img/mac终端iterm2有关配置.jpg
 author: codechf
 authorlink: https://github.com/code-chf
 categories:
