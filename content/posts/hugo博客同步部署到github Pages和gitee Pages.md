@@ -12,9 +12,12 @@ tags:
 draft: false
 ---
 
+自动将博客部署到github和gitee的方法，实现博客的自动化过程。
+
 <!--more-->
 
 # hugo博客同步部署到github和gitee的两种方法
+用hugo搭建个人博客时，常常需要部署到github或gitee，因为github支持自动部署但国内访问速度很慢，gitee免费版速度快但却不支持自动部署，而且还不能绑定自己的域名，所以最后研究出下面的同时部署的方法。
 
 ## 方法一
 
