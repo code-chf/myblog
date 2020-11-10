@@ -247,21 +247,39 @@ Python中原生的一款基于网络请求的模块，功能强大，简单便�
    
        # post请求参数处理
        word = input('请输入城市：')
-       page_index = input('请输入要获取第几页的数据：')
-       page_size = input('请觉得每页显示多少条数据：')
+       index = input('请输入每页显示记录的数目：')
        data = {
            'cname': '',
            'pid': '',
            'keyword': word,  # 关键字
-           'pageIndex': page_index,  # 获取的是第几页的数据
-           'pageSize': page_size,  # 每页显示的数据数量
+           'pageIndex': '1',  # 获取的是第几页的数据
+           'pageSize': index,  # 每页显示的数据数量
        }
-       response = requests.post(url=post_url, data=data, headers=headers)
+       page_txt = requests.post(url=post_url, data=data, headers=headers).json()
    
-       list_data = response.text
+       # 数据处理
+       store_txt = []
+       store_txt.append(page_txt['Table1'])  # page_txt中的Table1对应的就是数据
+       cnt = page_txt['Table'][0]['rowcount']  # page_txt中的Table对应的是记录总数
+       page_cnt = cnt//eval(index) + 2  # 页数
+   
+       # 多页查询
+       for i in range(2, page_cnt):
+           ki = str(i)
+           data = {
+               'cname': '',
+               'pid': '',
+               'keyword': word,  # 关键字
+               'pageIndex': ki,  # 获取的是第几页的数据
+               'pageSize': index,  # 每页显示的数据数量
+           }
+           page_txt = requests.post(post_url, data, headers).json()
+           store_txt.append(page_txt['Table1'])
+   
+       # 持久化存储
        fileName = word + '.json'
        fp = open(fileName, 'w', encoding='utf-8')
-       json.dump(list_data, fp=fp, ensure_ascii=False)
+       json.dump(store_txt, fp=fp, ensure_ascii=False)
    
        print('successful!')
    ```
