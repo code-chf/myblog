@@ -939,6 +939,12 @@ h   l      <左>         <右>
 
 Notes
 -----
+## vim使用操作技巧，日常使用整理
+
+1. 'cw'表示修改单词并进入插入模式，需要光标在单词的第一个字母，如果光标在单词内，需要按'ciw'表示'change in word'
+
+
+
 
 *   基于 [fprintf](http://www.fprintf.net/vimCheatSheet.html).
 *   由 [cstfb](https://github.com/cstfb) 基于 [Arief Bayu Purwanto](https://github.com/ariefbayu) 制作的 Vim 速查表翻译而来.
