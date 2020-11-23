@@ -7,9 +7,7 @@ theme = "dream"
 copyright = '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"></a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。'
 
 googleAnalytics = "UA-98295641-1"
-  
 enableRobotsTXT = true
-
 hasCJKLanguage = true
 
 ## 是否开启disqus评论，不要和utteranc同时开启
@@ -40,20 +38,27 @@ hasCJKLanguage = true
     lineNos = true
     style = "vs"
 
-
-
 [params]
   background = "black"
-  backgroundImage = "/me/background.jpg"
+  backgroundImage = "/me/background1.jpeg"
   linkColor = "seagreen"
+  
+  # dark mode
+  darkLinkColor = "darkseagreen"
+  backgroundDark = "black"
+  backgroundImageDark = "/me/background.jpg"
+  darkNav = true
+  dark404 = true
+  
+  
 
   author = "CHENG-HF"
-  description = "cheng-hf 的生活记录～"
+  description = "codechf 的生活记录～"
   avatar = "/me/me/1.jpg"
+  headerTitle = "codechf 的博客"
   motto = "与其感慨路难行，不如马上出发。"
-  categoriesLimitInHeader = 12
+  categoriesLimitInHeader = 8
   headerBottomText = "记录生活，记录美好~"
-
   rss = true
 
 ## 配置 utteranc评论,教程参考 https://utteranc.es/
@@ -72,10 +77,9 @@ hasCJKLanguage = true
   github = "code-chf"
   # stackoverflow = ""
   # codepen = ""
-  qq = " "
+  qq = "1968173984"
 
   siteStartYear = 2019
-
   favicon = "/favicon.ico"
 
   highlightjs = true
@@ -89,10 +93,6 @@ hasCJKLanguage = true
 
   # options
   showSummaryCoverInPost = true
-  # hasTwitterEmbed = true
-
-  # dark mode
-  darkLinkColor = "darkseagreen"
-  darkNav = true
-  dark404 = true
+  #hasTwitterEmbed = true
+  
   
