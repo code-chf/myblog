@@ -46,7 +46,6 @@ cd ..
 
 #同步部署到github上面
 echo "\033[0;32mDeploying updates to GitHub...\033[0m"
-hugo
 #自定义创建public_github发布目录
 hugo --destination="public_github"
 # Go To Public folder
