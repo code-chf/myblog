@@ -40,13 +40,13 @@ hasCJKLanguage = true
 
 [params]
   background = "black"
-  backgroundImage = "/me/background1.jpeg"
+  backgroundImage = "me/background1.jpeg"
   linkColor = "seagreen"
   
   # dark mode
   darkLinkColor = "darkseagreen"
   backgroundDark = "black"
-  backgroundImageDark = "/me/background.jpg"
+  backgroundImageDark = "me/background.jpg"
   darkNav = true
   dark404 = true
   
@@ -54,7 +54,7 @@ hasCJKLanguage = true
 
   author = "CHENG-HF"
   description = "codechf 的生活记录～"
-  avatar = "/me/me/1.jpg"
+  avatar = "me/me/1.jpg"
   headerTitle = "codechf 的博客"
   motto = "与其感慨路难行，不如马上出发。"
   categoriesLimitInHeader = 8
