@@ -68,6 +68,6 @@ cd ..
 
 
 #为服务器生成静态站点
-echo "\033[0;32mDeploying updates to GitHub...\033[0m"
+echo "\033[0;32mDeploying updates to Server...\033[0m"
 #自定义创建public_server发布目录
-hugo destination="public_server" --baseURL="/" 
+hugo --destination="public_server" --baseURL="/" 
