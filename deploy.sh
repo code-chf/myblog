@@ -72,3 +72,21 @@ echo "\033[0;32mDeploying updates to Server...\033[0m"
 #自定义创建public_server发布目录
 hugo --destination="public_server" --baseURL="/" 
 scp -r ~/Documents/hugo/myblog/public_server codechf@192.168.1.8:/root/myblog
+
+# Go To Public folder
+cd public_server
+# git init
+git add .
+# Commit changes.
+msg="rebuilding site `date`"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+git commit -m "$msg"
+#删除url并重新添加url
+git remote rm origin
+git remote add origin codechf@192.168.1.8:/root/myblog/public_server.git
+# Push source and build repos.
+git push -u origin master
+# Come Back up to the Project Root
+cd ..
