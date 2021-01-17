@@ -67,12 +67,10 @@ git push -u origin master
 cd ..
 
 
-#为服务器生成静态站点
+#部署到个人本地服务器
 echo "\033[0;32mDeploying updates to Server...\033[0m"
 #自定义创建public_server发布目录
 hugo --destination="public_server" --baseURL="/" 
-scp -r ~/Documents/hugo/myblog/public_server codechf@192.168.1.8:/root/myblog
-
 # Go To Public folder
 cd public_server
 # git init
