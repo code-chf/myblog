@@ -100,7 +100,6 @@ Linux Deploy 是一个在 Androit 上运行的 chroot 容器。使用 Linux Depl
 
 2. 修改源地址
 如果在国内，请将源地址改为国内的镜像，海外的源下载速度可能会慢。
-
 例如 Debian 的源：<https://mirrors.163.com/debian/> 或 <https://mirrors.tuna.tsinghua.edu.cn/debian/>
 如果选择安装的其他发行版本，如CentOs或Ubuntu，个人使用的是Debian，网上也有用Ubuntu的，其实Ubuntu可能会更适合arm64结构的处理器。
 
