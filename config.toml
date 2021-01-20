@@ -1,5 +1,5 @@
 baseurl = "https://codechf.cn"
-languageCode = "zh-Hans"
+languageCode = "zh-Hans-CN"
 defaultContentLanguage = "zh"
 title = "codechf的个人博客"
 theme = "dream"
