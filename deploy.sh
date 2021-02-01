@@ -22,7 +22,8 @@ git push -u origin master
 #自动部署到gitee码云
 echo "\033[0;32mDeploying updates to Gitee...\033[0m"
 # 用hugo建立一个静态站点
-hugo --baseURL="https://codechf.gitee.io"
+# hugo --baseURL="https://codechf.gitee.io"
+hugo
 # Go To Public folder
 cd public
 # Add changes to git.
@@ -70,7 +71,7 @@ cd ..
 #部署到个人本地服务器
 echo "\033[0;32mDeploying updates to Server...\033[0m"
 #自定义创建public_server发布目录
-hugo --destination="public_server" --baseURL="/" 
+hugo --destination="public_server" --baseURL="/"
 # Go To Public folder
 cd public_server
 # git init

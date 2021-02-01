@@ -1,4 +1,5 @@
-baseurl = "https://codechf.cn"
+# baseurl = "https://codechf.cn"
+baseurl = "/"
 languageCode = "zh-Hans-CN"
 defaultContentLanguage = "zh"
 title = "codechf的个人博客"
@@ -8,6 +9,7 @@ copyright = '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa
 
 enableRobotsTXT = true
 hasCJKLanguage = true
+disablePathToLower = true
 
 ## 是否开启disqus评论，不要和utteranc同时开启
 # disqusShortname = "g1eny0ung"
