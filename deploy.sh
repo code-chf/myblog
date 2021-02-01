@@ -22,8 +22,7 @@ git push -u origin master
 #自动部署到gitee码云
 echo "\033[0;32mDeploying updates to Gitee...\033[0m"
 # 用hugo建立一个静态站点
-# hugo --baseURL="https://codechf.gitee.io"
-hugo
+hugo --baseURL="https://codechf.gitee.io"
 # Go To Public folder
 cd public
 # Add changes to git.
@@ -84,8 +83,8 @@ fi
 git commit -m "$msg"
 #删除url并重新添加url
 git remote rm origin
-git remote add origin codechf@192.168.1.8:/root/myblog/public_server.git
+git remote add origin codechf@ipv6.codechf.cn:/root/myblog/public_server.git
 # Push source and build repos.
-git push -u origin master
+git push origin master
 # Come Back up to the Project Root
 cd ..

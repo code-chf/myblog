@@ -1,5 +1,4 @@
-# baseurl = "https://codechf.cn"
-baseurl = "/"
+baseurl = "https://codechf.cn"
 languageCode = "zh-Hans-CN"
 defaultContentLanguage = "zh"
 title = "codechf的个人博客"
