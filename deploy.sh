@@ -83,7 +83,7 @@ fi
 git commit -m "$msg"
 #删除url并重新添加url
 git remote rm origin
-git remote add origin codechf@ipv6.codechf.cn:/home/codechf/myblog/public_server.git
+git remote add origin git@ipv6.codechf.cn:/home/gitrepo/public_server.git
 # Push source and build repos.
 git push origin master
 # Come Back up to the Project Root
