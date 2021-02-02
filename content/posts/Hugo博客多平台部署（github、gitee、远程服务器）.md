@@ -1,5 +1,5 @@
 ---
-title: Hugo博客同步部署到github Pages和gitee Pages
+title: Hugo博客多平台部署（github、gitee、远程服务器）
 date: 2020-11-02T12:45:22+08:00
 lastmod: 2020-11-02T12:45:22+08:00
 author: codechf
@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-自动将博客部署到github和gitee的方法，实现博客的自动化过程。
+自动将博客部署到github、gitee和远程服务器的方法，实现博客的自动化过程。
 
 <!--more-->
 
