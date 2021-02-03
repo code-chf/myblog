@@ -4,29 +4,39 @@ date: 2021-02-03T17:02:04+08:00
 lastmod: 2021-02-03T17:02:04+08:00
 author: codechf
 authorlink: https://github.com/code-chf
-cover: /img/default1.jpg
+cover: https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/NZoRvm-bnW62l.jpg
 categories:
-  - 其他
+  - Linux学习
 tags:
-  - 其他
+  - 技术帖
 draft: false
 ---
 本教程通过clash以及它的局域网共享功能实现所有设备的科学上网（设备需设置手动代理），并利用DNSPod + 个人域名 + ArDNSPod脚本实现动态域名的绑定，利用crontab实现自动更新域名。
 
 <!--more-->
 # 用clash实现多终端科学上网
+
 clash是比较推荐的一个科学上网工具，支持MacOS、Windows、路由器等终端，还有一个比较好的功能，那就是电脑实现了科学上网，只需要把“允许局域网连接”打开，局域网下的所有设备通过手动设置代理就可以实现科学上网，既不用买昂贵的软路由，也避免了手机等设备使用VPN的电量损耗，还能享受电脑强大的CPU算力，带来更稳定的科学上网体验。我们这里假设已经实现了科学上网。
 
 ## 1.实现多设备科学上网
+
 - **我的终端设备：**
 Clash for MacOs、iPhone 8、iPad 10.5、小米5
 
 - **电脑端准备**
-电脑端点击上方任务栏的clash图标，勾选“允许局域网连接”，一定要勾选此项，这样clash的端口才会开放出来。
-然后打开电脑设置里的“网络”，记下当前电脑的局域网IP地址，我的是`192.168.1.17`，然后打开clash的控制台，点击“设置”，记下“HTTP代理端口”，默认是"7890"。
+  电脑端点击上方任务栏的clash图标，勾选“允许局域网连接”，一定要勾选此项，这样clash的端口才会开放出来。
+  然后打开电脑设置里的“网络”，记下当前电脑的局域网IP地址，我的是`192.168.1.17`，然后打开clash的控制台，点击“设置”，记下“HTTP代理端口”，默认是"7890"。
+
+  <img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/mWkdQl-%E6%88%AA%E5%B1%8F2021-02-03%2019.21.44.png" alt="截屏2021-02-03 19.21.44" style="zoom: 50%;" />
 
 - **设备端准备**
-打开手机或其他设备的Wi-Fi设置选项，保证电脑和设备在一个局域网下，及一个网关下，打开Wi-Fi选择界面，点击Wi-Fi右侧的按钮进入Wi-Fi高级设置界面，找到` 代理 `或` HTTP代理 `，选择` 手动 `，输入服务器地址（电脑的IP地址），以及端口（clash的HTTP代理端口，默认7890），点击存储后浏览器打开[www.google.com](https://www.google.com)或[www.youtube.com](https://www.youtube.com)就能够正常访问了，可以看到手机无需打开vpn，也不用折腾软路由，就能够实现科学上网，前提是电脑不关机。
+  打开手机或其他设备的Wi-Fi设置选项，保证电脑和设备在一个局域网下，及一个网关下，打开Wi-Fi选择界面，点击Wi-Fi右侧的按钮进入Wi-Fi高级设置界面，找到` 代理 `或` HTTP代理 `，选择` 手动 `，输入服务器地址（电脑的IP地址），以及端口（clash的HTTP代理端口，默认7890），点击存储后浏览器打开[www.google.com](https://www.google.com) 或 [www.youtube.com](https://www.youtube.com) 就能够正常访问了，可以看到手机无需打开vpn，也不用折腾软路由，就能够实现科学上网，前提是电脑不关机。
+
+  <img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/7sO525-image-20210203192729295.png" alt="image-20210203192729295" style="zoom:33%;" />
+  
+  <img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/KJgSqz-image-20210203192751600.png" alt="image-20210203192751600" style="zoom:33%;" />
+  
+  <img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/UzmeE7-image-20210203193050083.png" alt="image-20210203193050083" style="zoom:33%;" />
 
 ## 2.实现DDNS动态域名解析
 - **为什么需要动态域名解析？**
@@ -42,13 +52,14 @@ Clash for MacOs、iPhone 8、iPad 10.5、小米5
   | 可以随便设置 | A表示ipv4<br />AAAA表示ipv6 |   默认   | 电脑的IPV4地址 |    -     | 默认 |
 
 - **设置自动化脚本，定时更新ipv4地址**
-这里用到了ArDNSPod脚本（作者[imki911](https://github.com/imki911/ArDNSPod),改自[anrip](https://github.com/anrip/dnspod-shell))。
-开始设计脚本前，我们要先利用腾讯云的接口，在dnspod的管理界面[https://console.dnspod.cn/account/token#](https://console.dnspod.cn/account/token#)创建API Token，创建成功后获得ID和Token，利用这两个信息，就可以通过API修改域名解析值了，详见API文档：[https://www.dnspod.cn/docs/info.html#d](https://www.dnspod.cn/docs/info.html#d)。
+  这里用到了ArDNSPod脚本（作者[imki911](https://github.com/imki911/ArDNSPod) ,改自[anrip](https://github.com/anrip/dnspod-shell))。
+  开始设计脚本前，我们要先利用腾讯云的接口，在dnspod的管理界面[https://console.dnspod.cn/account/token#](https://console.dnspod.cn/account/token#) 创建API Token，创建成功后获得ID和Token，利用这两个信息，就可以通过API修改域名解析值了，详见API文档：[https://www.dnspod.cn/docs/info.html#d](https://www.dnspod.cn/docs/info.html#d) 。
 
-首先进入[https://github.com/imki911/ArDNSPod](https://github.com/imki911/ArDNSPod)，下载脚本文件，将之前得到的ID和token写入dns.conf 文件, 并指定要绑定的子域名。注意arToken由ID和Token通过英文逗号组合而成。
+  首先进入[https://github.com/imki911/ArDNSPod](https://github.com/imki911/ArDNSPod) ，下载脚本文件，将之前得到的ID和token写入dns.conf 文件, 并指定要绑定的子域名。注意arToken由ID和Token通过英文逗号组合而成。
 
-**dns.conf**
-```bash
+  **dns.conf**
+
+```sh
 
 # 1. Combine your token ID and token together as follows
 arToken="211315,0ad030f2ff924e3add1ddsfs454fs1d"
@@ -59,12 +70,17 @@ arDdnsCheck "codechf.cn" "clash"
 
 ```
 
-ddnspod.sh中，IPtype选择1或2，如果没有nvram，将`ip addr show dev eth0 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | awk 'NR==1'`中的 eth0 改为本机上的网口设备（通过ipconfig命令查看网络接口）
+- ddnspod.sh中，IPtype选择1或2，如果没有nvram，将`ip addr show dev eth0 | sed -e's/^.*inet6 \([^ ]*\)\/.*$/\1/;t;d' | awk 'NR==1'`中的 eth0 改为本机上的网口设备（通过ipconfig命令查看网络接口）
 
-我将文件dns.conf中的内容复制到ddnspod.sh的最后，并注释掉. $DIR/dns.conf（也可以不用合并成两个文件，参照作者描述方法）。最终形成一个文件ddnspod.sh。
+  我将文件dns.conf中的内容复制到ddnspod.sh的最后，并注释掉. $DIR/dns.conf（也可以不用合并成两个文件，参照作者描述方法）。最终形成一个文件ddnspod.sh。
+  
+- 打开终端，输入`cd 脚本文件所在目录` ，输入`sh ddnspod.sh` 运行脚本，结果如下：
+
+  <img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/ejOJAi-image-20210203193814273.png" alt="image-20210203193814273" style="zoom: 77%;" />
 
 **ddnspod.sh**
-```bash
+
+```sh
 #!/bin/bash
 source /etc/profile
 #################################################
@@ -356,3 +372,57 @@ arDdnsCheck "codechf.cn" "clash"
 
 
 ```
+
+# crontab设置定时任务
+
+脚本命令准备好之后，接下来就是为系统设置定时任务，这里我们用crontab实现。
+
+终端输入`crontab -l`查看当前用户下是否有定时任务，如果提示“zsh: command not found: crontab” 则需要去下载crontab相关的包，这里可以百度下。
+
+输入如果没有定时任务，则输入`crontab -e`新建一条任务，之后会提示选择用何种方式打开，这里建议第二种，选择vim打开。打开之后就是我们的任务脚本编辑区域，cron表达式可以百度，这里不再多讲，菜鸟教程也很不错[Linux crontab命令—菜鸟教程 ](https://www.runoob.com/linux/linux-comm-crontab.html) ，这里附上我的脚本：
+
+```bash
+#!/bin/bash
+# m h  dom mon dow   command
+
+# *    *    *    *    *
+# -    -    -    -    -
+# |    |    |    |    |
+# |    |    |    |    +----- 星期中星期几 (0 - 7) (星期天 为0)
+# |    |    |    +---------- 月份 (1 - 12) 
+# |    |    +--------------- 一个月中的第几天 (1 - 31)
+# |    +-------------------- 小时 (0 - 23)
+# +------------------------- 分钟 (0 - 59)
+
+*/30 * * * * /bin/bash ~/DDNS/ddnspod.sh >> ~/log/crontab.log
+```
+
+最后一条命令的意思是，每隔30分钟，用/bin/bash执行~/DDNS/ddnspod.sh脚本文件，并把输出信息写入crontab.log中。
+
+查看日志：
+
+<img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/XvJJ6n-image-20210203200117149.png" alt="image-20210203200117149" style="zoom:80%;" />
+
+最后，在手机上代理改成我们绑定的域名，比如我的是clash.codechf.cn，这是一个子域名，当我们手机设置后，它就会先找到域名对应的IP，然后通过这个IP用电脑转发数据，访问局域网内的资源，通过这个clash端口实现科学上网。
+
+<img src="https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/nEwMcI-image-20210203201636625.png" alt="image-20210203201636625" style="zoom:33%;" />
+
+# 遇到的坑
+
+1. 这个坑花了很多时间去填，脚本在shell可以运行，但是在crontab任务中却运行出错，一开始以为是权限问题，改成777了还是那样，后来给ddnspod.sh单个文件附加了执行权限，也还是没用，查看日志，输出结果如下：
+
+   ![image-20210203200445201](https://gitee.com/codechf/uPic-file/raw/master/uPic/2021/02/tkB77L-image-20210203200445201.png)
+
+   分析过后，发现sh脚本确实是执行了，只是脚本没有执行成功，脚本里面的语句系统不认识，就无法执行代码，就没有结果，最后上网搜索，才找到原因。
+
+   因为我的MacOS一直用的是zsh，早就不用bash了，所以脚本文件缺少环境的设置，在ddnspod.sh开头加上下面两行代码：
+
+   ```sh
+   #!/bin/bash
+   source /etc/profile
+   ```
+2. 其他问题暂时没有遇到，有需要的话参考其他博客，问题挺全面的：[MAC crontab定时任务不执行shell](https://blog.csdn.net/qq_34485626/article/details/111408192)
+
+# 成果
+
+这么一番设置，在家就能畅快科学上网了，就算突然断电咋也不怕，不固定IP也不用担心，电脑会自动帮你把新的IP更新到域名中，手机就不用频繁的切换IP了。

@@ -6,7 +6,7 @@ author: codechf
 authorlink: https://github.com/code-chf
 cover: https://gitee.com/codechf/uPic-file/raw/master/uPic/2020/11/jzhm9F-OEkeFN.png
 categories:
-  - python
+  - Python
 tags:
   - 编程语言
   - 技术帖
