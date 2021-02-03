@@ -68,7 +68,7 @@ git push -u origin master
 cd ..
 echo "\033[0;32mGithub部署成功！\033[0m"
 
-#部署到个人本地服务器
+#部署到codechf个人本地服务器
 echo "\033[0;32m开始部署到远程服务器...\033[0m"
 #自定义创建public_server发布目录
 hugo --destination="public_server" --baseURL="/"
