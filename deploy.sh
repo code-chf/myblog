@@ -101,7 +101,7 @@ cd ..
 # expect {
 # 	"*password:"{send "cc122112\r"}
 # }
-./expect.sh
+sh ./expect.sh
 
 echo "\033[0;32m远程服务器部署成功！\033[0m"
 echo "\033[0;32m脚本运行完毕！\033[0m"
