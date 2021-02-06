@@ -86,7 +86,7 @@ git commit -m "$msg"
 git remote rm origin
 git remote add origin git@ipv6.codechf.cn:/home/gitrepo/public_server.git
 # Push source and build repos.
-git push
+git push --set-upstream origin master
 # Come Back up to the Project Root
 cd ..
 #登录ssh自动从git服务器pull到/root/myblog/public_server
