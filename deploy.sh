@@ -1,3 +1,4 @@
+#!/bin/zsh
 #该脚本实现myblog/content下的文章更新、config.toml配置文件更新和同时部署到gitee码云和github
 
 echo "\033[0;32m开始同步hugo博客站点！!\033[0m"
@@ -89,12 +90,18 @@ git push origin master
 # Come Back up to the Project Root
 cd ..
 
+#!/usr/bin/expect
 #登录ssh自动从git服务器pull到/root/myblog/public_server
-ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
+#或采用一行命令：ssh codechf@ipv6.codechf.cn "cd /root/myblog/public_server;git pull /home/gitrepo/public_server.git;exit"
+spawn ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
 cd /root/myblog/public_server
 git pull /home/gitrepo/public_server.git
 exit
 eeooff
+expect {
+	"*password:"{send "cc122112\r"}
+}
 
+#!/bin/zsh
 echo "\033[0;32m远程服务器部署成功！\033[0m"
 echo "\033[0;32m脚本运行完毕！\033[0m"
