@@ -90,19 +90,18 @@ git push origin master
 # Come Back up to the Project Root
 cd ..
 
-#!/usr/bin/expect
 #登录ssh自动从git服务器pull到/root/myblog/public_server
 #或采用一行命令：
-spawn ssh codechf@ipv6.codechf.cn "cd /root/myblog/public_server;git pull /home/gitrepo/public_server.git;exit"
+#spawn ssh codechf@ipv6.codechf.cn "cd /root/myblog/public_server;git pull /home/gitrepo/public_server.git;exit"
 # spawn ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
 # cd /root/myblog/public_server
 # git pull /home/gitrepo/public_server.git
 # exit
 # eeooff
-expect {
-	"*password:"{send "cc122112\r"}
-}
+# expect {
+# 	"*password:"{send "cc122112\r"}
+# }
+./expect.sh
 
-#!/bin/zsh
 echo "\033[0;32m远程服务器部署成功！\033[0m"
 echo "\033[0;32m脚本运行完毕！\033[0m"
