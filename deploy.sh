@@ -88,7 +88,9 @@ git remote rm origin
 # expect {
 # 	"*password:" {send "cc122112\r"}
 # }
-sh expect.sh
+DIR=$(dirname -- "$(readlink "$0")")
+sh $DIR/expect.sh
+
 # Push source and build repos.
 git push origin master
 # Come Back up to the Project Root
