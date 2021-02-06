@@ -84,24 +84,21 @@ fi
 git commit -m "$msg"
 #删除url并重新添加url
 git remote rm origin
-git remote add origin git@ipv6.codechf.cn:/home/gitrepo/public_server.git
+spawn git remote add origin git@ipv6.codechf.cn:/home/gitrepo/public_server.git
+expect {
+	"*password:" {send "cc122112\r"}
+}
 # Push source and build repos.
 git push origin master
 # Come Back up to the Project Root
 cd ..
 
 #登录ssh自动从git服务器pull到/root/myblog/public_server
-#或采用一行命令：
-#spawn ssh codechf@ipv6.codechf.cn "cd /root/myblog/public_server;git pull /home/gitrepo/public_server.git;exit"
-# spawn ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
-# cd /root/myblog/public_server
-# git pull /home/gitrepo/public_server.git
-# exit
-# eeooff
-# expect {
-# 	"*password:"{send "cc122112\r"}
-# }
-sh ./expect.sh
+spawn ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
+cd /root/myblog/public_server
+git pull /home/gitrepo/public_server.git
+exit
+eeooff
 
 echo "\033[0;32m远程服务器部署成功！\033[0m"
 echo "\033[0;32m脚本运行完毕！\033[0m"
