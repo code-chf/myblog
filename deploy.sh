@@ -92,12 +92,13 @@ cd ..
 
 #!/usr/bin/expect
 #登录ssh自动从git服务器pull到/root/myblog/public_server
-#或采用一行命令：ssh codechf@ipv6.codechf.cn "cd /root/myblog/public_server;git pull /home/gitrepo/public_server.git;exit"
-spawn ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
-cd /root/myblog/public_server
-git pull /home/gitrepo/public_server.git
-exit
-eeooff
+#或采用一行命令：
+spawn ssh codechf@ipv6.codechf.cn "cd /root/myblog/public_server;git pull /home/gitrepo/public_server.git;exit"
+# spawn ssh codechf@ipv6.codechf.cn > /dev/null 2>&1 << eeooff
+# cd /root/myblog/public_server
+# git pull /home/gitrepo/public_server.git
+# exit
+# eeooff
 expect {
 	"*password:"{send "cc122112\r"}
 }
