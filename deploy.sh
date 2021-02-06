@@ -84,11 +84,7 @@ fi
 git commit -m "$msg"
 #删除url并重新添加url
 git remote rm origin
-# spawn git remote add origin git@ipv6.codechf.cn:/home/gitrepo/public_server.git
-# expect {
-# 	"*password:" {send "cc122112\r"}
-# }
-sh expect.sh
+git remote add origin git@ipv6.codechf.cn:/home/gitrepo/public_server.git
 # Push source and build repos.
 git push origin master
 # Come Back up to the Project Root
