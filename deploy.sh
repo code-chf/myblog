@@ -74,7 +74,6 @@ echo "\033[0;32m开始部署到远程服务器...\033[0m"
 hugo --destination="public_server" --baseURL="/"
 # Go To Public folder
 cd public_server
-# git init
 git add .
 # Commit changes.
 msg="rebuilding site `date`"
@@ -96,5 +95,6 @@ cd /root/myblog/public_server
 git pull /home/gitrepo/public_server.git
 exit
 eeooff
+
 echo "\033[0;32m远程服务器部署成功！\033[0m"
 echo "\033[0;32m脚本运行完毕！\033[0m"
